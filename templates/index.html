@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/modernizr-2.8.3.min.js') }}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Your Gold: {{total}}</h1>
+            <form action="/reset" method="POST">
+                <button type="submit" class="btn btn-primary">Reset</button>
+            </form>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <h3>Farm</h3>
+                <p>
+                    (earn 10-20 gold)
+                </p>
+                <form action="/process_money" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="hidden" value="farm" />
+                        <button type="submit" class="btn btn-primary">Find Gold!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h3>Cave</h3>
+                <p>
+                    (earn 5-10 gold)
+                </p>
+                <form action="/process_money" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="hidden" value="cave" />
+                        <button type="submit" class="btn btn-primary">Find Gold!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h3>House</h3>
+                <p>
+                    (earn 2-5 gold)
+                </p>
+                <form action="/process_money" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="hidden" value="house" />
+                        <button type="submit" class="btn btn-primary">Find Gold!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <h3>Casino</h3>
+                <p>
+                    (earn 0-50 gold)
+                </p>
+                <form action="/process_money" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="hidden" value="casino" />
+                        <button type="submit" class="btn btn-primary">Find Gold!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Activities:</h4>
+            <ul id="activity">
+                {% for class, activity in activities %}
+                <li class="{{class}}">{{activity}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.11.2.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>
