@@ -6,6 +6,9 @@ import time
 app = Flask(__name__,)
 app.secret_key = '\xb8?\xff\xd4\x1a\xdf\x11\xeaiP2[\x8cs\x1d\x17\x9d\xc5\xcf\x7f\xbb\xf0P\xd3'
 
+# This is awesome work, Im just finding stuff to nitpick about so I can make a pull request
+# personally, I wouldn't use this randomnum function because random already has multiple methods that are identical, but 
+# I can understant why you used it. 
 def randomNum(start, end):
     num = random.randrange(start, end)
     return num
@@ -45,6 +48,8 @@ def index():
 
 @app.route('/process_money', methods=['POST'])
 def gold():
+    # this is all good, but notice how it is the same lines of code repeated multiple times? If you are looking for something to try
+    # this could be refactored using a dictionary and some sneakyness. But overall, this is great work!
     hiddenInput = request.form['hidden']
     if hiddenInput == 'farm':
         farmGold = randomNum(10, 21)
